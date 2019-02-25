@@ -14,8 +14,8 @@ const {TextControl} = wp.components;
 const {MediaUpload} = wp.editor;
 registerBlockType('bonseo/block-bs-slider-article', {
 	title: __('Slider Article'),
-	icon: 'editor-ol',
-	category: 'common',
+	icon: 'dashicons-slides,
+	category: 'bonseo-blocks',
 	keywords: [
 		__('slider-article'),
 		__('BonSeo'),
