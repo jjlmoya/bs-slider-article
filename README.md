@@ -13,7 +13,7 @@
 
 
 `Para más información`
-- [Bloque de Últimos Artículos en ZigZag](https://www.bonseo.es/wordpress-gutenberg/slider-article)
+- [Bloque de Slider Article](https://www.bonseo.es/wordpress-gutenberg/slider-article)
 - [Repositorio](https://gitlab.com/bonseo-guttenberg/bs-slider-article)
 
 `Obtener más bloques`
