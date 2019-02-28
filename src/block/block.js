@@ -48,7 +48,7 @@ registerBlockType('bonseo/block-bs-slider-article', {
 				<TextControl
 					className={`${className}__title`}
 					label={__('Encabezado del bloque:')}
-					value={attributes.title != undefined ? attributes.title : 'Encabezado'}
+					value={attributes.title}
 					onChange={title => setAttributes({title})}
 				/>
 				<MediaUpload
