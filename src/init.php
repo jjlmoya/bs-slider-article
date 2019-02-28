@@ -104,7 +104,7 @@ function render_bs_slider_article_post()
 		$html .= render_bs_slider_article_element($post);
 	}
 	return '
-	 	<hr>
+	 	<hr class="a-separator a-separator--rainbow a-separator--animate l-column--1-2">
 		<div class="ml-block-articles-minimalist l-flex l-flex--justify-center a-pad--y-20">
 			' . $html . '   
 		</div>
