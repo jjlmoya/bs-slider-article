@@ -24,7 +24,10 @@ register_block_type('bonseo/' . $block,
 			),
 			'backgroundImage' => array(
 				'type' => 'string',
-			)
+			),
+			'className' => array(
+				'type' => 'string',
+			),
 		),
 		'render_callback' => 'render_bs_slider_article',
 	)
@@ -110,10 +113,11 @@ function render_bs_slider_article_post()
 
 function render_bs_slider_article($attributes)
 {
-	$image = $attributes["backgroundImage"];
+	$class = isset($attributes['className']) ? ' ' . $attributes['className'] : '';
+	$image = isset($attributes['backgroundImage']) ? $attributes["backgroundImage"] : '';
 
 	return '
-		<section class="og-slider og-slider--articles l-flex l-flex--direction-column a-bg--image a-bg--image--technology">
+		<section class="og-slider og-slider--articles l-flex l-flex--direction-column a-bg--image a-bg--image--technology' . $class . '">
 			<h1 class="a-text a-text--xl a-text--secondary a-mar-40 og-slider--articles__text">
 				' . $attributes['title'] . '
 			</h1>    
