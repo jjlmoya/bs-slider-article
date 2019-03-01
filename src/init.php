@@ -115,7 +115,6 @@ function render_bs_slider_article($attributes)
 {
 	$class = isset($attributes['className']) ? ' ' . $attributes['className'] : '';
 	$image = isset($attributes['backgroundImage']) ? $attributes["backgroundImage"] : '';
-
 	return '
 		<section class="og-slider og-slider--articles l-flex l-flex--direction-column a-bg--image a-bg--image--technology' . $class . '">
 			<h1 class="a-text a-text--xl a-text--secondary a-mar-40 og-slider--articles__text">
