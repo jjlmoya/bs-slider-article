@@ -33,24 +33,6 @@ register_block_type('bonseo/' . $block,
 	)
 );
 
-
-/**
- * Enqueue Gutenberg block assets for both frontend + backend.
- *
- * @uses {wp-editor} for WP editor styles.
- * @since 1.0.0
- */
-function bs_slider_article_assets()
-{
-	wp_enqueue_style(
-		'bs_slider_article-style-css',
-		plugins_url('dist/blocks.style.build.css', dirname(__FILE__)),
-		array('wp-editor')
-	);
-}
-
-add_action('enqueue_block_assets', 'bs_slider_article_assets');
-
 /**
  * Enqueue Gutenberg block assets for backend editor.
  *
@@ -69,14 +51,6 @@ function bs_slider_article_editor_assets()
 		array('wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor'), // Dependencies, defined above.
 		// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: File modification time.
 		true // Enqueue the script in the footer.
-	);
-
-	// Styles.
-	wp_enqueue_style(
-		'bs_slider_article-block-editor-css', // Handle.
-		plugins_url('dist/blocks.editor.build.css', dirname(__FILE__)), // Block editor CSS.
-		array('wp-edit-blocks') // Dependency to include the CSS after it.
-	// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: File modification time.
 	);
 }
 
@@ -104,7 +78,7 @@ function render_bs_slider_article_post()
 		$html .= render_bs_slider_article_element($post);
 	}
 	return '
-	 	<hr class="a-separator a-separator--rainbow a-separator--animate l-column--1-2">
+	 	<hr class="a-separator a-separator--light a-separator--animate l-column--1-2">
 		<div class="ml-block-articles-minimalist l-flex l-flex--justify-center a-pad--y-20">
 			' . $html . '   
 		</div>
@@ -115,10 +89,11 @@ function render_bs_slider_article($attributes)
 {
 	$class = isset($attributes['className']) ? ' ' . $attributes['className'] : '';
 	$image = isset($attributes['backgroundImage']) ? $attributes["backgroundImage"] : '';
+	$title = isset($attributes['title']) ? $attributes["title"] : '';
 	return '
-		<section class="og-slider og-slider--articles l-flex l-flex--direction-column a-bg--image a-bg--image--technology' . $class . '">
+		<section class="og-slider og-slider--articles l-flex l-flex--direction-column a-bg--image a-bg--image--technology ' . $class . '">
 			<h1 class="a-text a-text--xl a-text--secondary a-mar-40 og-slider--articles__text">
-				' . $attributes['title'] . '
+				' . $title . '
 			</h1>    
 			' . render_bs_slider_article_post() . '
 		</section>
@@ -129,5 +104,6 @@ function render_bs_slider_article($attributes)
 		</style>
 	';
 }
+
 // Hook: Editor assets.
 add_action('enqueue_block_editor_assets', 'bs_slider_article_editor_assets');
