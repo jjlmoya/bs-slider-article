@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Slider Article [BonSeo Block]
- * Plugin URI: https://www.bonseo.es/wordpress-gutenberg-blocks/slider-article
+ * Plugin URI: https://www.bonseo.es/bloques-gutenberg/slider-article
  * Description: Un bloque Gutenberg que muestra un slider con los últimos artículos
  * Author: jjlmoya
  * Author URI: https://www.bonseo.es/
