@@ -6,8 +6,10 @@
  */
 const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
-const {TextControl} = wp.components;
 const {MediaUpload} = wp.editor;
+const {SelectControl, TextControl} = wp.components;
+const {withSelect} = wp.data;
+
 registerBlockType('bonseo/block-bs-slider-article', {
 	title: __('Slider Article'),
 	icon: 'slides',
@@ -17,13 +19,22 @@ registerBlockType('bonseo/block-bs-slider-article', {
 		__('BonSeo'),
 		__('BonSeo Block'),
 	],
-	edit: function ({posts, className, attributes, setAttributes}) {
+	edit: withSelect((select) => {
+		const {getPostTypes} = select('core');
+		return {
+			types: getPostTypes(),
+		};
+	})(function (props) {
+		const {attributes, className, setAttributes} = props;
+		var types = props.types;
+		if (!props.types) {
+			return "Loading...";
+		}
 		function onImageSelect(imageObject) {
 			setAttributes({
 				backgroundImage: imageObject.sizes.full.url
 			})
 		};
-
 		function drawImageButton(open) {
 			var html;
 			if (attributes.backgroundImage) {
@@ -40,12 +51,24 @@ registerBlockType('bonseo/block-bs-slider-article', {
 
 		return (
 			<div>
-				<h2> Slider Block</h2>
+				<h2> Slider Block 3</h2>
 				<TextControl
 					className={`${className}__title`}
 					label={__('Encabezado del bloque:')}
 					value={attributes.title}
 					onChange={title => setAttributes({title})}
+				/>
+				<SelectControl
+					label="Tipo de Post"
+					className={`${className}__type`}
+					value={attributes.type}
+					options={types.map((type) => {
+						return {
+							label: type.name,
+							value: type.slug
+						}
+					})}
+					onChange={type => setAttributes({type})}
 				/>
 				<MediaUpload
 					onSelect={onImageSelect}
@@ -55,9 +78,10 @@ registerBlockType('bonseo/block-bs-slider-article', {
 						drawImageButton(open)
 					)}
 				/>
+
 			</div>
 		);
-	},
+	}),
 	save: function () {
 		return null;
 	}
