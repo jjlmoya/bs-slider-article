@@ -106,5 +106,4 @@ function render_bs_slider_article($attributes)
 	';
 }
 
-// Hook: Editor assets.
 add_action('enqueue_block_editor_assets', 'bs_slider_article_editor_assets');
