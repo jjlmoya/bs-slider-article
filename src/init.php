@@ -92,7 +92,9 @@ function render_bs_slider_article($attributes)
 		return '';
 	}
 	return '
-		<section class="og-slider og-slider--articles l-flex l-flex--direction-column a-bg--image a-bg--image--technology ' . $class . '">
+		<section class="og-slider og-slider--articles
+		 			   l-flex l-flex--direction-column l-grid-column--full 
+		 			    a-bg--image a-bg--image--technology ' . $class . '">
 			<h1 class="a-text a-text--xl a-text--secondary a-mar-40 og-slider--articles__text">
 				' . $title . '
 			</h1>    
